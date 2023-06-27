@@ -1,0 +1,57 @@
+/*Here is another task for you, prepared by Monk himself. So, this is how it goes :
+Given an integer array A of size N, Monk needs you to answer T queries for him. In each query, he gives you 2 integers P and Q. In response to each of these queries, you need to tell Monk the count of numbers in array A. that are either divisible by P, Q, or both.
+
+Input Format :
+The first line contains a single integer N denoting the size of array A. The next line contains N space separated integers, where the i th integer denotes A[i].
+The next line contains a single integer T denoting the number of queries Monk poses to you. Each of the next T lines contains 2 space separated integers P and Q.
+
+Output Format :
+For each query, print the answer on a new line.
+
+*/
+
+--------------------------------------------------------------------------------------
+Naive Approach:
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cin >> n;
+    int A[n];
+    for(int i = 0; i < n; i++)
+        cin >> A[i];
+
+    int T;
+    cin >> T;
+    int B[T][2];
+    for(int i = 0; i < T; i++)
+        cin >> B[i][0] >> B[i][1];
+   
+    for(int i = 0; i < T; i++){
+        int cnt1 = 0;
+        int cnt2 = 0;
+        int cnt3 = 0;
+
+        for(int j = 0; j < n; j++){
+            if(A[j] % B[i][0] == 0)
+                cnt1++;
+            if(A[j] % B[i][1] == 0)
+                cnt2++;
+            if(A[j] % B[i][0] == 0 && A[j] % B[i][1] == 0)
+                cnt3++;
+        }
+
+        cout << cnt1 + cnt2 - cnt3 << endl;
+    }
+
+    return 0;
+}
+
+TC : O(T*N)
+
+--------------------------------------------------------------------------------------
+
+Using Sieve Variation(Divisor Variation)
+
+
